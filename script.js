@@ -12,7 +12,7 @@ function createSquares (size) {
         fragment.appendChild(square);
      square.addEventListener('mouseover', function (event){
       chooseColor();
-      event.target.style.backgroundColor = `${color}`;
+      event.target.style.backgroundColor = color;
      })
     }
  }
@@ -30,14 +30,6 @@ const getRandomColor = () => {
   return '#' + c.slice(0, 6);
 };
 
-//rainbow colors
-const colorRainbow = () => {
-  const rainbowColors = ["#ff0000", "#ffa500", "#ffff00", "#008000", "#0000ff", "#4b0082", "#ee82ee"];
- // return rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
- rainbowColors.forEach (function (value) {return value})
-
-};
-
 //button for changing size
 let btn = document.getElementById("size-btn");
 btn.addEventListener('click', event => {
@@ -52,10 +44,8 @@ btn.addEventListener('click', event => {
 });
 
 function chooseColor () {
-  if (switchColor.classList.contains("on")) {
+  if (rainbow.classList.contains("on")) {
 color = getRandomColor();
-  } else if (rainbow.classList.contains("on")) {
-color = colorRainbow();
 } else if (defaultButton.classList.contains("on")){
 color = "#cbc3e3";
 } else {
@@ -63,22 +53,15 @@ color = "#cbc3e3";
 }
 }
 
-//switch to a different color 
-let switchColor = document.getElementById('switch-btn');
-switchColor.addEventListener('click', event => {
-  rainbow.classList.remove("on");
-  switchColor.classList.add("on");
-});
 
 let rainbow = document.getElementById('rainbow-btn');
 rainbow.addEventListener('click', event => {
-  switchColor.classList.remove("on");
   rainbow.classList.add("on");
+  defaultButton.classList.remove("on");
 });
 
 let defaultButton = document.getElementById('default-btn');
 defaultButton.addEventListener('click', event => {
-  switchColor.classList.remove("on");
   rainbow.classList.remove("on");
   defaultButton.classList.add("on");
 });

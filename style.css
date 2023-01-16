@@ -33,6 +33,7 @@ button {
     box-shadow: 5px 5px;
     background-color: #eef1f9;
     font-size: 22px;
+    padding: 5px;
 }
 .square {
     background: white;
